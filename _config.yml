@@ -4,7 +4,7 @@
 
 # Site
 title: MeltJS
-subtitle:
+subtitle: MeltJS
 description:
 author: Alex Ou
 language: en
@@ -71,4 +71,4 @@ deploy:
   type: git
   repo: git@meltjs.com:meltjs/meltjs.github.io.git
   branch: master
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}" 
+  message: "Site updated: {{ now('DD/MM/YYYY HH:mm:ss') }}" 
