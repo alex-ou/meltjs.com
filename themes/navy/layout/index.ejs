@@ -1,0 +1,98 @@
+<div class="sidebar">
+  <ul class="main-menu">
+    <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+  </ul>
+</div>
+
+<div id="hero">
+  <div class="inner">
+    <div class="middle">
+      <h2 class="melt">Melt.js</h2>
+      <h1>
+        A minimalistic yet powerful Javascript <br>library for building web user interfaces
+      </h1>
+      <p class="middle">
+        <a class="button" href="/#examples">GET STARTED</a>
+        <a class="button white" href="https://github.com/alex-ou/meltjs" target="_blank">GITHUB</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="highlights">
+  <div class="inner">
+    <div class="point">
+      <h2>One-way data flow</h2>
+      <p>
+        Predicable application state with a single model and one-way root-to-leaf data flow. Hassle-free way to dispatch the action and data to the model update functions.
+      </p>
+    </div>
+
+    <div class="point">
+      <h2>Component&Container support</h2>
+      <p>
+        Better separation of concerns and code reusability with presentational components and container components. Connect views to the model easily via containers to get a clean component structure.
+      </p>
+    </div>
+
+    <div class="point">
+      <h2>Template-based</h2>
+      <p>
+        Write expressive and concise views in pure HTML with react-like binding syntax and built-in directives e.g. each, if, ref etc.
+      </p>
+    </div>
+
+    <div class="point">
+      <h2>Custom directives</h2>
+      <p>
+        Wrap DOM interactions inside custom directives to create more expressive views and achieve more code reusability
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="examples">
+  <div class="inner">
+    <h3>A simple counter app</h3>
+    <p>
+      MeltJS has three essential parts:
+      <ul>
+        <li>
+          Model: The state of the whole application
+        </li>
+      <li>
+        Update: The only place where the model can be updated. Similar to Redux, the update functions are pure functions, they should return a new model instead of mutating the mode
+
+      </li>
+      <li>
+        Template: The way to render the model as HTML, notice that MeltJS uses single curly bracket notation to bind the expressions to DOM elements
+      </li>
+      </ul>
+    </p>
+    <div class="code">
+      <script async src="//jsfiddle.net/alex_ou/10e3sbnq/12/embed/js,html,result/"></script>    </div>
+  </div>
+  <div class="inner">
+    <h3>A complex todo app</h3>
+    <div class="code">
+      <iframe width="100%" height="400" src="//jsfiddle.net/alex_ou/og2x3vbp/15/embedded/js,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="footer">
+  Copyright &copy; <%- new Date().getFullYear() %> Alex Ou
+</div>
+
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>

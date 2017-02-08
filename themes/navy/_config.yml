@@ -1,0 +1,4 @@
+site_description: "Melt.js - Intuitive, Fast and Composable MVVM for building interactive interfaces."
+google_analytics:
+root_domain: meltjs.come
+melt_version: 0.1

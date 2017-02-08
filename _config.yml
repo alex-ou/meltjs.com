@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: MeltJS
-subtitle: MeltJS
+title: Melt.js
+subtitle: Melt.js
 description:
 author: Alex Ou
 language: en
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: navy
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
