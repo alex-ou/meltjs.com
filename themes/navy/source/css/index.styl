@@ -103,24 +103,28 @@ body
     .code
       height  400px
       overflow scroll
+  a
+    color $primary_color
+    font-weight 600
   h3
     color $primary_headline_color
     font-size 1.5em
     margin 0 0 10px
-  a
-    margin 20px 15px 0
-    position relative
-  a, img
-    width 100px
-    display inline-block
-    vertical-align middle
-  p
-    color $light
-  img
-    transition all .3s ease
-    filter contrast(0%)
-    &:hover
-      filter none
+  .demo
+    background-color #f8f8f8
+    border 1px solid #dadada;
+    border-radius 2px;
+    padding 25px 35px;
+    margin-top 1em;
+    margin-bottom 40px;
+    font-size 1.2em;
+    line-height 1.5em;
+    -webkit-user-select none;
+    -moz-user-select none;
+    -ms-user-select none;
+    user-select none;
+    overflow-x auto;
+
 
 #footer
   padding $space 0
@@ -158,6 +162,7 @@ body
       font-size 2em
     h2
       display block
+      color $primary_text_color
     .button
       font-size .9em
 
