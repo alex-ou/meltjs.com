@@ -1,39 +1,58 @@
 ``` html
-<div id="app">
-
+<div id="counter-app">
 </div>
 ```
 
 ``` js
 Melt.app({
-  el: '#app', //the root DOM element
+  elem: '#app', //the root DOM element
   model: {
     count: 0
   },
   update: {
-    increase: ({model}) => {
+    // The pure functions that returns a new model
+    decrease: function (context) {
+      var model = context.model
+      return {count: model.count - 1}
+    },
+    increase: function (context) {
+      var model = context.model
       return {count: model.count + 1}
     }
   },
   template:
-  `<div>{model.count}
-    <button on-click='{increase()}'>+</button>
+  `<div>
+    <span>{model.count}</span>
+    <button on-click='{decrease}'>-</button>
+    <button on-click='{increase}'>+</button>
   </div>`
 })
 ```
-<div id="app" class="demo">
+<div id="counter-app" class="demo">
 </div>
 <script>
     Melt.app({
-      el: '#app', //the root DOM element
+      elem: '#counter-app', //the root DOM element
       model: {
         count: 0
       },
       update: {
+        // The pure function that updates the model
+        // Notice that the model is passed in as the argument
+        decrease: function (context) {
+        	var model = context.model
+          return {count: model.count - 1}
+        },
         increase: function (context) {
-          return {count: context.model.count + 1}
+        	var model = context.model
+          return {count: model.count + 1}
         }
       },
-      template: '<div>{model.count}<button on-click="{increase()}">+</button></div>'
+      template:
+      `<div>
+      	<span>{model.count}</span>
+      	<button on-click='{decrease}'>-</button>
+        <button on-click='{increase}'>+</button>
+      </div>`
     })
 </script>
