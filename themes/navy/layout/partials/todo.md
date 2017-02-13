@@ -18,10 +18,12 @@ Melt.component('add-todo', {
   template:
     `<form on-submit="onSubmit">
       <input ref="input">
-      <button type="submit"> Add Todo </button>
+      <button type="submit">
+        Add Todo
+      </button>
     </form>`,
-  class: class AddTodoComponent {
-    onSubmit (e) {
+  class: function AddTodoComponent () {
+    this.onSubmit = function (e) {
       e.preventDefault()
       const input = this.refs.input
       var text = input.value
@@ -37,28 +39,28 @@ Melt.component('add-todo', {
 Melt.container('app', {
   template:
     `<div>
-      <add-todo on-add-todo="{addTodo}"></add-todo>
-      <todo-list todos="{model.todos}"></todo-list>
+      <add-todo on-add-todo="{addTodo}">
+      </add-todo>
+      <todo-list todos="{model.todos}">
+      </todo-list>
     </div>`
 })
 
-let nextId = 0
 Melt.app({
-  elem: '#todo-app',
+  elem: '#app',
   template: '<app></app>',
   model: {
     todos: []
   },
   update: {
-    addTodo: function ({model}, text) {
-      const todos = [
-      ...model.todos,
-      {
-        id: nextId++,
-        text: text,
-        completed: false
-      }]
-      return Object.assign({}, model, {todos})
+    addTodo: function (context, text) {
+      var model = context.model
+    	return {
+          todos: model.todos.concat({
+            id: Date.now(),
+            text: text
+          })
+        }
   	}
   }
 })
@@ -82,7 +84,7 @@ Melt.app({
       template:
         `<form on-submit="onSubmit">
           <input ref="input">
-          <button type="submit"> Add Todo </button>
+          <button type="submit">Add Todo</button>
         </form>`,
       class: function AddTodoComponent () {
         this.onSubmit = function (e) {
@@ -106,7 +108,6 @@ Melt.app({
         </div>`
     })
 
-    var nextId = 0
     Melt.app({
       elem: '#todo-app',
       template: '<app></app>',
@@ -117,11 +118,11 @@ Melt.app({
         addTodo: function (context, text) {
           var model = context.model
         	return {
-            todos: model.todos.concat({
-              id: nextId++,
-              text: text
-            })
-          }
+              todos: model.todos.concat({
+                id: Date.now(),
+                text: text
+              })
+            }
       	}
       }
     })

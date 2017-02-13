@@ -10,7 +10,7 @@ Melt.app({
     count: 0
   },
   update: {
-    // The pure functions that returns a new model
+//Pure functions that returns a new model
     decrease: function (context) {
       var model = context.model
       return {count: model.count - 1}
@@ -23,8 +23,12 @@ Melt.app({
   template:
   `<div>
     <span>{model.count}</span>
-    <button on-click='{decrease}'>-</button>
-    <button on-click='{increase}'>+</button>
+    <button on-click='{decrease}'>
+        Decrease
+    </button>
+    <button on-click='{increase}'>
+        Increase
+    </button>
   </div>`
 })
 ```
@@ -51,8 +55,8 @@ Melt.app({
       template:
       `<div>
       	<span>{model.count}</span>
-      	<button on-click='{decrease}'>-</button>
-        <button on-click='{increase}'>+</button>
+      	<button on-click='{decrease}'>Decrease</button>
+        <button on-click='{increase}'>Increase</button>
       </div>`
     })
 </script>
