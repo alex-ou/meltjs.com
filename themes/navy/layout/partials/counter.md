@@ -10,7 +10,7 @@ Melt.app({
     count: 0
   },
   update: {
-//Pure functions that returns a new model
+//Pure functions that return a new model
     decrease: function (context) {
       var model = context.model
       return {count: model.count - 1}
