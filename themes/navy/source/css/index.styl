@@ -1,6 +1,7 @@
 @import "_common"
 @import "_header"
 @import '_sidebar'
+@import "_demo.styl"
 
 $width = 900px
 $space = 50px
@@ -102,10 +103,27 @@ body
     margin 30px auto
     pre
       padding 6px
+      position relative
     code
       font-size 12px
       height  400px
       overflow scroll
+      &.js:after, &.html:after
+        position absolute
+        top 0
+        right 0
+        color #ccc
+        text-align right
+        font-size .75em
+        padding 5px 10px 0
+        line-height 15px
+        height 15px
+        font-weight 600
+      &.js:after
+        content 'JS'
+      &.html:after
+        content 'HTML'
+
   a
     color $primary_color
     font-weight 600
