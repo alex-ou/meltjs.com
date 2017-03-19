@@ -21,7 +21,7 @@ Let's say we want to create a simple counter application which allows the users 
 
 First we need to decide the data structure and the default values for the application and put it into the model.
 
-The model is very simple in this case, it includes a count field, which should be set to 0 by default. So the initial code should be:
+The model is very simple in this case, it only includes a count field, which should be set to 0 by default. So the initial code should be:
 ```html
 <div id="app1">
 </div>
@@ -93,7 +93,7 @@ MeltJS supports React-like single curly bracket notation to bind the expressions
 <div id="app2">
 </div>
 ```
-```js
+```javascript
 Melt.app({
   elem: '#app2',
   template:'<span>1 + 1 = {1 + 1}</span>'
@@ -134,7 +134,7 @@ The built-in directive `if` can be used to conditionally render an element based
   </div>
 </div>
 ```
-```js
+```javascript
 Melt.app({
   elem: '#app3',
   model: {count: 2}
@@ -149,7 +149,7 @@ Melt.app({
 </div>
 <script>
 Melt.app({
-  elem: '#app4',
+  elem: '#app3',
   model: {count: 2}
 })
 </script>
@@ -160,10 +160,10 @@ Structural directive `each` comes into play when you want to render a list of it
 <div id="app4">
   <ul>
     <li each="{todo in model.todos}">{todo}</li>
-  </div>
+  </ul>
 </div>
 ```
-```js
+```javascript
 Melt.app({
   elem: '#app4',
   model: {
@@ -194,4 +194,113 @@ Melt.app({
 })
 </script>
 {% endraw %}
+
 ## Component
+Components play a very important role in code reusability and separation of concerns. You can develop simple and straightforward components and compose them to create complex UIs. MeltJS has build-in support for components.
+```html
+<div id="app5">
+  <ul>
+    <todo></todo>
+    <todo></todo>
+  </ul>
+</div>
+```
+```javascript
+Melt.component('todo', {
+  template: '<li>This is a todo item</li>'
+})
+Melt.app({
+  elem: '#app5'
+})
+```
+{% raw %}
+<div id="app5" class="demo">
+  <ul>
+    <todo></todo>
+    <todo></todo>
+  </ul>
+</div>
+<script>
+Melt.component('todo', {
+  template: `
+    <li>This is a todo item</li>
+  `
+})
+Melt.app({
+  elem: '#app5'
+})
+</script>
+{% endraw %}
+
+In the previous example, we defined a todo component and used it in the application template. Once you define a component, using it in the template is just like using the normal HTML elements. Of course, the todo component was a bit boring because it could only render a non-changeable DOM element.
+
+We can make it more 'dynamic' by passing data to it via props.
+```html
+<div id="app6">
+  <ul>
+    <todo each="{todo in model.todos}"
+      text={todo.text}
+      completed={todo.completed}>
+    </todo>
+  </ul>
+</div>
+```
+
+```css
+#app6 li.completed {
+  text-decoration: line-through;
+}
+```
+
+```javascript
+Melt.component('todo', {
+  template:
+    '<li class.completed="{props.completed}">{props.text}</li>'
+})
+Melt.app({
+  elem: '#app6',
+  model: {
+    todos: [
+      {text: 'Pay bills', completed: false},
+      {text: 'Exercise', completed: true},
+      {text: 'Buy snacks', completed: true}
+    ]
+  }
+})
+```
+{% raw %}
+<div id="app6" class="demo">
+  <ul>
+    <todo each="{todo in model.todos}"
+      text={todo.text}
+      completed={todo.completed}>
+    </todo>
+  </ul>
+</div>
+<style>
+li.completed {
+  text-decoration: line-through;
+}
+</style>
+<script>
+Melt.component('todo', {
+  template: `
+    <li class.completed="{props.completed}">{props.text}</li>
+  `
+})
+Melt.app({
+  elem: '#app6',
+  model: {
+    todos: [
+      {text: 'Pay bills', completed: false},
+      {text: 'Exercise', completed: true},
+      {text: 'Buy snacks', completed: true}
+    ]
+  }
+})
+</script>
+{% endraw %}
+
+We defined a todo component which receives 2 props from the parent: `text` which is the text of the todo item and `completed` which tells whether the todo item has been completed. We also used the `class` directive to apply the 'completed' css class to the element if variable `completed` is true, thus giving the li element a `line-through` text decoration.
+
+This wraps up the introduction of MeltJS. To summarize, we've talked through the core concepts - Model, Template and Update, the react-like binding syntax and the components. MeltJS offers a lot more than this, you can read through this guide to learn more advanced concepts such as Custom Directives and Containers etc.
