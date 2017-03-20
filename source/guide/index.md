@@ -10,10 +10,10 @@ Inspired by Elm, MeltJS is a light framework for building reactive web user inte
 
 MeltJS has three essential parts:
 * **Model:** The state of the whole application
-* **Template:** The way to render the model as HTML, MeltJS uses single curly bracket notation to bind the expressions to DOM elements
+* **Template:** The way to render the model as HTML, MeltJS uses single curly bracket, e.g. `{expression}`, notation to bind the expressions to DOM elements
 * **Update:** The place where you define the functions that respond to user's actions and update the model. Similar to Redux, the update functions are pure functions, they should return a new model instead of mutating the existing one.
 
-When developing with MeltJS, the typical approach is  to go from the model part, then to the template part (the view), and then to the update part.
+When developing with MeltJS, the typical approach is  to go from the model, then to the template (the view), and then to the update.
 
 Let's say we want to create a simple counter application which allows the users to increase and decrease the count.
 
@@ -34,7 +34,7 @@ Melt.app({
   }
 })
 ```
-
+Of course the code shown above won't produce any result because no view/template is defined.
 Then, we should think about how to visualize the model - render the model into html. We only want to show the count as plain text, so the code should be like this:
 ```html
 <div id="app1">

@@ -1,7 +1,7 @@
 ---
 title: HTML Class Binding
 type: guide
-order: 4
+order: 6
 ---
 
 The appearance of HTML elements are typically controlled by adding or removing classes dynamically. In MeltJS, you can bind to the `class` to add or remove a set of CSS classes simultaneously.

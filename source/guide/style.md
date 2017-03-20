@@ -1,7 +1,7 @@
 ---
 title: Inline Style Binding
 type: guide
-order: 5
+order: 7
 ---
 
 The appearance of HTML elements can also be controlled by adding or removing inline styles. In MeltJS, you can bind to the `style` to add or remove inline styles simultaneously.
